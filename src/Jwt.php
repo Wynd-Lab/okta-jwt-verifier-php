@@ -42,7 +42,7 @@ class Jwt
     {
         $ts = $this->toJson()->exp;
         if(class_exists(\Carbon\Carbon::class) && $carbonInstance) {
-            return \Carbon\Carbon::createFromTimestampUTC($ts);
+            return new \Carbon\Carbon('@'.$ts);
         }
 
         return $ts;
@@ -52,7 +52,7 @@ class Jwt
     {
         $ts = $this->toJson()->iat;
         if(class_exists(\Carbon\Carbon::class) && $carbonInstance) {
-            return \Carbon\Carbon::createFromTimestampUTC($ts);
+            return new \Carbon\Carbon('@'.$ts);
         }
 
         return $ts;
